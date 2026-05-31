@@ -1,51 +1,56 @@
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
-
-const imageExists = project.thumbnail && project.thumbnail !== '';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
 
 const gradients = {
-  'cat-food': 'bg-gradient-to-br from-orange-400 to-amber-600',
-  'task-manager': 'bg-gradient-to-br from-blue-400 to-indigo-600',
-  'vision-manager': 'bg-gradient-to-br from-emerald-400 to-teal-600'
+  'cat-food': 'from-orange-500/20 to-amber-600/20',
+  'task-manager': 'from-blue-500/20 to-indigo-600/20',
+  'vision-manager': 'from-emerald-500/20 to-teal-600/20'
+};
+
+const statusColors = {
+  'complete': 'bg-green-900/40 text-green-400 border-green-800',
+  'coming-soon': 'bg-blue-900/40 text-blue-400 border-blue-800',
+  'development': 'bg-amber-900/40 text-amber-400 border-amber-800'
 };
 
 export default function ProjectPage({ project }) {
   return (
     <div className="pt-20">
-      <div className={`h-64 md:h-80 ${gradients[project.id] || 'bg-gray-200'} flex items-center justify-center relative`}>
-        <h1 className="text-3xl md:text-5xl font-bold text-white">{project.title}</h1>
-        <span className={`absolute top-4 right-4 text-sm font-medium px-3 py-1.5 rounded-full ${
-          project.status === 'complete'
-            ? 'bg-green-100 text-green-700'
-            : 'bg-amber-100 text-amber-700'
-        }`}>
-          {project.status === 'complete' ? 'Complete' : 'In Development'}
+      {/* Header */}
+      <div className={`h-56 md:h-72 bg-gradient-to-br ${gradients[project.id] || 'from-gray-800 to-gray-900'} flex items-center justify-center relative`}>
+        <h1 className="text-3xl md:text-5xl font-bold text-white/90">{project.title}</h1>
+        <span className={`absolute top-4 right-4 text-xs font-medium px-3 py-1.5 rounded-full border ${statusColors[project.status]}`}>
+          {project.status === 'complete' ? 'Complete' : project.status === 'coming-soon' ? 'Coming Soon' : 'In Development'}
         </span>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 py-12">
-        <p className="text-lg text-gray-600 leading-relaxed mb-8">{project.fullDesc}</p>
+      {/* Content */}
+      <div className="max-w-3xl mx-auto px-6 py-12">
+        <p className="text-base md:text-lg text-[var(--muted)] leading-relaxed mb-10">{project.fullDesc}</p>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4">Tech Stack</h2>
-          <div className="flex flex-wrap gap-3">
+          <h2 className="text-lg font-bold mb-4">Tech Stack</h2>
+          <div className="flex flex-wrap gap-2.5">
             {project.tech.map((t) => (
-              <span key={t} className="bg-gray-100 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-full">{t}</span>
+              <span key={t} className="bg-[var(--card-bg)] border border-[var(--border)] text-sm px-3 py-1.5 rounded-lg text-[var(--muted)]">{t}</span>
             ))}
           </div>
         </div>
 
-        <div className="mb-10">
-          <h2 className="text-xl font-bold mb-4">Features</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-600">
+        <div className="mb-12">
+          <h2 className="text-lg font-bold mb-4">Features</h2>
+          <ul className="space-y-3">
             {project.features.map((f, i) => (
-              <li key={i}>{f}</li>
+              <li key={i} className="flex items-start gap-3 text-sm text-[var(--muted)]">
+                <ChevronRight size={14} className="mt-0.5 text-[var(--accent)] shrink-0" />
+                <span>{f}</span>
+              </li>
             ))}
           </ul>
         </div>
 
-        <Link href="/#projects" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition">
-          <ArrowLeft size={16} /> Back to Projects
+        <Link href="/#projects" className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--accent)] transition">
+          <ArrowLeft size={14} /> Back to Projects
         </Link>
       </div>
     </div>

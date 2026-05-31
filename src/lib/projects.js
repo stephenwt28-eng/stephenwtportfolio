@@ -1,10 +1,10 @@
 export const projects = [
   {
     id: 'cat-food',
-    title: 'Cat Food Subscription App',
-    shortDesc: 'Customizable cat food delivery with personalized meal plans.',
+    title: 'RA&A Cat Food Delivery',
+    shortDesc: 'Customizable cat food delivery subscription app with personalized meal plans.',
     fullDesc: 'A full-stack subscription app where users create accounts (dummy data), customize cat food orders by selecting meats, vegetables, supplements, container type, and delivery frequency. Includes a simulated credit card checkout and the ability to revisit and edit existing plans.',
-    tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
+    tech: ['React', 'Vite', 'Node'],
     status: 'complete',
     thumbnail: '/images/cat-food.png',
     features: [
@@ -17,33 +17,35 @@ export const projects = [
     ]
   },
   {
-    id: 'task-manager',
-    title: 'Task Manager',
-    shortDesc: 'Simple task management with login, task creation, and due dates.',
-    fullDesc: 'A straightforward task management app with user authentication. Users can create tasks, set due dates, mark completion, and delete tasks. Clean minimal UI focused on functionality.',
-    tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
-    status: 'complete',
-    thumbnail: '/images/task-manager.png',
-    features: [
-      'User registration and login',
-      'Create new tasks',
-      'Set due dates on tasks',
-      'Delete tasks',
-      'Task list view'
-    ]
-  },
-  {
     id: 'vision-manager',
-    title: 'VisionManager',
+    title: 'Vision Manager',
     shortDesc: 'Optical management system with Supabase integration.',
-    fullDesc: 'A management system for optical/vision-related business operations. Built with Next.js and Supabase database. Currently in active development — more details from Guto pending.',
+    fullDesc: 'A management system for optical/vision-related business operations. Built with Next.js and Supabase database.',
     tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
     status: 'development',
-    thumbnail: '/images/vision-manager.png',
+    thumbnail: '/images/task-manager.png',
     features: [
       'Supabase database integration',
       'Optical business management',
       'In development — features being finalized'
+    ]
+  },
+  {
+    id: 'learning-tracker',
+    title: 'Learning Tracker',
+    shortDesc: 'A private dashboard where the user tracks learning topics, progress, and confidence.',
+    fullDesc: 'A full-stack learning tracker built with Next.js and Supabase. Users register, log in, and manage their own learning entries — tracking topics, categories, status (Not Started/Learning/Practicing/Completed), confidence level (Low/Medium/High), notes, and study dates. Each user only sees their own data via Row Level Security.',
+    tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
+    status: 'coming-soon',
+    thumbnail: '/images/learning-tracker.png',
+    features: [
+      'User registration and login with Supabase Auth',
+      'Create learning entries with topic, category, status, confidence, notes, and study date',
+      'List all learning entries for the logged-in user',
+      'Edit and update existing entries',
+      'Delete entries',
+      'Row Level Security — each user only sees their own data',
+      'Protected dashboard with session management'
     ]
   }
 ];

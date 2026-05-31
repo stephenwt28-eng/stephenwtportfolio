@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --muted: #a0a0a0;
+  --accent: #3ff381;
+  --card-bg: #111111;
+  --border: #1f1f1f;
+  font-family: 'Cabin'
+}
+
+h1 {
+  font-family: 'Copperplate'
+}
+
+h2 {
+  font-family: 'Copperplate'
+}
+
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+* { scrollbar-width: thin; scrollbar-color: #333 #111; }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

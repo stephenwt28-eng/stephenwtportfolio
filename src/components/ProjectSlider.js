@@ -8,36 +8,30 @@ import { projects } from '@/lib/projects';
 export default function ProjectSlider() {
   const scrollRef = useRef(null);
 
-  const scroll = (direction) => {
+  const scroll = (dir) => {
     if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.clientWidth;
-    scrollRef.current.scrollBy({ left: direction === 'left' ? -cardWidth : cardWidth, behavior: 'smooth' });
+    const w = scrollRef.current.clientWidth;
+    scrollRef.current.scrollBy({ left: dir === 'left' ? -w : w, behavior: 'smooth' });
   };
 
   return (
     <div className="relative">
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scroll-snap-x snap-mandatory scrollbar-hide pb-4"
-        style={{ scrollSnapType: 'x mandatory', msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+        className="flex gap-5 overflow-x-auto pb-4 hide-scrollbar"
+        style={{ scrollSnapType: 'x mandatory' }}
       >
-        {projects.map((project) => (
-          <div key={project.id} className="snap-start flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]">
-            <ProjectCard project={project} />
+        {projects.map((p) => (
+          <div key={p.id} className="snap-start flex-shrink-0 w-[85vw] md:w-[calc(50%-10px)] lg:w-[calc(33.33%-14px)]">
+            <ProjectCard project={p} />
           </div>
         ))}
       </div>
-      <button
-        onClick={() => scroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 bg-white/90 rounded-full p-2 shadow-md hover:bg-white transition hidden md:block"
-      >
-        <ChevronLeft size={20} />
+      <button onClick={() => scroll('left')} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#1a1a1a] border border-[var(--border)] rounded-full p-2 hover:bg-[#222] transition hidden md:block">
+        <ChevronLeft size={18} className="text-[var(--foreground)]" />
       </button>
-      <button
-        onClick={() => scroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 bg-white/90 rounded-full p-2 shadow-md hover:bg-white transition hidden md:block"
-      >
-        <ChevronRight size={20} />
+      <button onClick={() => scroll('right')} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#1a1a1a] border border-[var(--border)] rounded-full p-2 hover:bg-[#222] transition hidden md:block">
+        <ChevronRight size={18} className="text-[var(--foreground)]" />
       </button>
     </div>
   );
