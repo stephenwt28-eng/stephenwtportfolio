@@ -26,7 +26,19 @@ export default function ProjectPage({ project }) {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-6 py-12">
-        <p className="text-base md:text-lg text-[var(--muted)] leading-relaxed mb-10">{project.fullDesc}</p>
+        <p className="text-base md:text-lg text-[var(--muted)] leading-relaxed mb-10">
+  {project.liveUrl ? (
+    <>
+      {project.fullDesc.split('Click here')[0]}
+      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">
+        Click here
+      </a>
+      {project.fullDesc.split('Click here')[1]}
+    </>
+  ) : (
+    project.fullDesc
+  )}
+</p>
 
         <div className="mb-8">
           <h2 className="text-lg font-bold mb-4">Tech Stack</h2>
