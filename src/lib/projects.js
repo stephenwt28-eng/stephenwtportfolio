@@ -30,7 +30,7 @@ export const projects = [
       'Optical business management',
       'In development — features being finalized'
     ],
-    liveUrl: 'https://vision-manager-git-main-stephen-tobin-s-projects.vercel.app/'
+    liveUrl: 'https://vision-manager-five.vercel.app/'
   },
   {
     id: 'learning-tracker',
