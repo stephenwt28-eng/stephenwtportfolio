@@ -21,7 +21,7 @@ export const projects = [
     id: 'vision-manager',
     title: 'Vision Manager',
     shortDesc: 'Optical management system with Supabase integration.',
-    fullDesc: 'A management system for optical/vision-related business operations. Built with Next.js and Supabase database. Click here for optical management excellence!',
+    fullDesc: 'Ditch the paperwork and modernize your optical retail operations. Engineered with Next.js and a robust Supabase backend, VisionManager is a full-stack management platform built specifically for the real day-to-day workflow of a busy optical shop. It eliminates physical paper trails by centralizing customer management, digital service envelopes, staff tracking, and analytics into a single, lightning-fast dashboard. Click here for optical management excellence!',
     tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
     status: 'development',
     thumbnail: '/images/task-manager.png',
