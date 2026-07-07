@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata = {
   title: 'Stephen Tobin | Full-Stack Developer',
   description: 'Full-stack developer building production-ready web applications with Next.js, Supabase, and Tailwind CSS.',
-  openGraph: { title: 'Stephen Tobin | Full-Stack Developer', description: 'Full-stack developer portfolio.' }
+  openGraph: { title: 'Stephen Tobin | Full-Stack Developer', description: 'Full-stack developer portfolio.' },
+  icons: {
+    icon: '/images/SWT_signature_inconvenienced.png',
+  },
 };
 
 export default function RootLayout({ children }) {

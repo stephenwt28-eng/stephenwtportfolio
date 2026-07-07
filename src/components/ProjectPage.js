@@ -19,9 +19,6 @@ export default function ProjectPage({ project }) {
       {/* Header */}
       <div className={`h-56 md:h-72 bg-gradient-to-br ${gradients[project.id] || 'from-gray-800 to-gray-900'} flex items-center justify-center relative`}>
         <h1 className="text-3xl md:text-5xl font-bold text-white/90">{project.title}</h1>
-        <span className={`absolute top-4 right-4 text-xs font-medium px-3 py-1.5 rounded-full border ${statusColors[project.status]}`}>
-          {project.status === 'complete' ? 'Complete' : project.status === 'coming-soon' ? 'Coming Soon' : 'In Development'}
-        </span>
       </div>
 
       {/* Content */}

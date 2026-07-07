@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import ProjectSlider from '@/components/ProjectSlider';
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -29,10 +30,16 @@ export default function Home() {
 
           {/* Profile Image */}
           <div className="flex-shrink-0">
-            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center">
-              <span className="text-5xl md:text-6xl font-bold text-white/60">ST</span>
-            </div>
-          </div>
+  <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden">
+    <Image
+      src="/images/SwT_profile.jpeg"
+      alt="Stephen Tobin"
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
+</div>
         </div>
       </section>
 

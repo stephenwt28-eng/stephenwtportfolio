@@ -6,7 +6,7 @@ export const projects = [
     fullDesc: 'A full-stack subscription app where users create accounts (dummy data), customize cat food orders by selecting meats, vegetables, supplements, container type, and delivery frequency. Includes a simulated credit card checkout and the ability to revisit and edit existing plans. Click here to create your own kitty concoction today!',
     tech: ['React', 'Vite', 'Node'],
     status: 'complete',
-    thumbnail: '/images/cat-food.png',
+    thumbnail: '/images/cat-food-app-thumbnail.png',
     features: [
       'User registration and login',
       'Customizable meal builder (meats, vegetables, supplements)',
@@ -24,7 +24,7 @@ export const projects = [
     fullDesc: 'Ditch the paperwork and modernize your optical retail operations. Engineered with Next.js and a robust Supabase backend, VisionManager is a full-stack management platform built specifically for the real day-to-day workflow of a busy optical shop. It eliminates physical paper trails by centralizing customer management, digital service envelopes, staff tracking, and analytics into a single, lightning-fast dashboard. Click here for optical management excellence!',
     tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
     status: 'development',
-    thumbnail: '/images/task-manager.png',
+    thumbnail: '/images/vision-manager-thumbnail.png',
     features: [
       'Supabase database integration',
       'Optical business management',

@@ -19,10 +19,11 @@ export default function ProjectCard({ project }) {
       className="group block rounded-xl bg-[var(--card-bg)] border border-[var(--border)] hover:border-[var(--accent)]/30 transition-all duration-300 overflow-hidden flex-shrink-0 w-full"
     >
       <div className={`h-44 bg-gradient-to-br ${gradients[project.id] || 'from-gray-800 to-gray-900'} flex items-center justify-center relative`}>
-        <span className="text-lg font-semibold text-white/40 group-hover:text-white/70 transition">{project.title}</span>
-        <span className={`absolute top-3 right-3 text-xs font-medium px-2.5 py-1 rounded-full border ${statusColors[project.status]}`}>
-          {project.status === 'complete' ? 'Complete' : project.status === 'coming-soon' ? 'Coming Soon' : 'In Development'}
-        </span>
+        <img 
+  src={project.thumbnail} 
+  alt={project.title} 
+  className="w-full h-full object-cover"
+/>
       </div>
       <div className="p-5">
         <h3 className="font-bold text-base mb-1.5 group-hover:text-[var(--accent)] transition">{project.title}</h3>
