@@ -30,7 +30,7 @@ export const projects = [
       'Optical business management',
       'In development — features being finalized'
     ],
-    liveUrl: 'https://vision-manager-five.vercel.app/'
+    liveUrl: 'https://visionmanager-red.vercel.app/'
   },
   {
     id: 'learning-tracker',
@@ -38,7 +38,7 @@ export const projects = [
     shortDesc: 'A private dashboard where the user tracks learning topics, progress, and confidence.',
     fullDesc: 'A full-stack learning tracker built with Next.js and Supabase. Users register, log in, and manage their own learning entries — tracking topics, categories, status (Not Started/Learning/Practicing/Completed), confidence level (Low/Medium/High), notes, and study dates. Each user only sees their own data via Row Level Security. Click here if you want to stay on top of your game with a brand-new regimen to keep you grounded!',
     tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
-    status: 'coming-soon',
+    status: 'complete',
     thumbnail: '/images/learningtracker_thumbnail.png',
     features: [
       'User registration and login with Supabase Auth',
@@ -49,6 +49,6 @@ export const projects = [
       'Row Level Security — each user only sees their own data',
       'Protected dashboard with session management'
     ],
-    liveUrl: 'https://learning-tracker-ten-nu.vercel.app/'
-  },
+    liveUrl: 'https://YOUR-LEARNING-TRACKER-URL.vercel.app/',
+  }
 ];

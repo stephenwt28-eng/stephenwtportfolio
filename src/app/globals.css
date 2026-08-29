@@ -4,20 +4,17 @@
 
 :root {
   --background: #0a0a0a;
-  --foreground: #f5f5f5;
-  --muted: #a0a0a0;
+  --foreground: #f5f5f2;
+  --muted: #9c968c;
+  --muted-dim: #6b665f;
   --accent: #3ff381;
-  --card-bg: #111111;
-  --border: #1f1f1f;
-  font-family: 'Cabin'
-}
-
-h1 {
-  font-family: 'Copperplate'
-}
-
-h2 {
-  font-family: 'Copperplate'
+  --accent-dim: #2bb85f;
+  --copper: #c17a4f;
+  --copper-dim: #8f5c3a;
+  --card-bg: #111110;
+  --border: #1f1f1e;
+  --border-copper: rgba(193, 122, 79, 0.35);
+  --border-emerald: rgba(63, 243, 129, 0.25);
 }
 
 html {
@@ -26,14 +23,31 @@ html {
 
 body {
   background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 1000px 600px at 10% -5%, rgba(193, 122, 79, 0.16), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 15%, rgba(63, 243, 129, 0.11), transparent 60%),
+    radial-gradient(ellipse 900px 500px at 30% 100%, rgba(193, 122, 79, 0.08), transparent 65%);
+  background-attachment: fixed;
   color: var(--foreground);
+  font-family: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2 {
+  font-family: 'Copperplate', 'Copperplate Gothic Bold', Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
+.font-label {
+  font-family: var(--font-mono), ui-monospace, 'SFMono-Regular', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: #06110a;
 }
 
 ::-webkit-scrollbar { width: 6px; }
@@ -44,3 +58,63 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Entrance animation --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.7s ease-out both;
+}
+
+/* --- Project cards --- */
+.project-card {
+  position: relative;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 60%), var(--card-bg);
+  border: 1px solid var(--border);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-glow, var(--border-copper));
+  box-shadow: 0 16px 40px -20px var(--card-glow, rgba(193, 122, 79, 0.4));
+}
+
+/* --- Hero photo glow --- */
+.hero-glow {
+  position: absolute;
+  inset: -30px;
+  background: conic-gradient(from 180deg, var(--copper), var(--accent), var(--copper));
+  border-radius: 9999px;
+  filter: blur(28px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* --- Gradient section divider --- */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-copper), var(--border-emerald), transparent);
+}
+.nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--copper), var(--accent));
+  z-index: 60;
+  transition: width 0.1s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+}

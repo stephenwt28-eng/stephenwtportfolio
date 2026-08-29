@@ -1,38 +1,70 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import { projects } from '@/lib/projects';
 
 export default function ProjectSlider() {
-  const scrollRef = useRef(null);
+  const trackRef = useRef(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
-  const scroll = (dir) => {
-    if (!scrollRef.current) return;
-    const w = scrollRef.current.clientWidth;
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -w : w, behavior: 'smooth' });
+  const updateEdges = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    updateEdges();
+    const el = trackRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', updateEdges);
+    window.addEventListener('resize', updateEdges);
+    return () => {
+      el.removeEventListener('scroll', updateEdges);
+      window.removeEventListener('resize', updateEdges);
+    };
+  }, []);
+
+  const scrollBy = (dir) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector('a')?.offsetWidth || 320;
+    el.scrollBy({ left: dir * (cardWidth + 20), behavior: 'smooth' });
   };
 
   return (
     <div className="relative">
       <div
-        ref={scrollRef}
-        className="flex gap-5 overflow-x-auto pb-4 hide-scrollbar"
-        style={{ scrollSnapType: 'x mandatory' }}
+        ref={trackRef}
+        className="hide-scrollbar flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
       >
-        {projects.map((p) => (
-          <div key={p.id} className="snap-start flex-shrink-0 w-[85vw] md:w-[calc(50%-10px)] lg:w-[calc(33.33%-14px)]">
-            <ProjectCard project={p} />
-          </div>
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
-      <button onClick={() => scroll('left')} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#1a1a1a] border border-[var(--border)] rounded-full p-2 hover:bg-[#222] transition hidden md:block">
-        <ChevronLeft size={18} className="text-[var(--foreground)]" />
-      </button>
-      <button onClick={() => scroll('right')} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#1a1a1a] border border-[var(--border)] rounded-full p-2 hover:bg-[#222] transition hidden md:block">
-        <ChevronRight size={18} className="text-[var(--foreground)]" />
-      </button>
+
+      <div className="flex items-center gap-3 mt-6">
+        <button
+          onClick={() => scrollBy(-1)}
+          disabled={atStart}
+          aria-label="Previous project"
+          className="w-9 h-9 flex items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] hover:border-[var(--border-copper)] hover:text-[var(--foreground)] disabled:opacity-30 disabled:cursor-default transition"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <button
+          onClick={() => scrollBy(1)}
+          disabled={atEnd}
+          aria-label="Next project"
+          className="w-9 h-9 flex items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)] hover:border-[var(--border-copper)] hover:text-[var(--foreground)] disabled:opacity-30 disabled:cursor-default transition"
+        >
+          <ChevronRight size={16} />
+        </button>
+      </div>
     </div>
   );
 }

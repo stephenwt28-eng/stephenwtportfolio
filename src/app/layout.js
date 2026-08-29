@@ -1,9 +1,21 @@
-import { Inter } from 'next/font/google';
+import { Cabin, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const cabin = Cabin({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cabin',
+  display: 'swap',
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Stephen Tobin | Full-Stack Developer',
@@ -16,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${cabin.variable} ${plexMono.variable}`}>
       <body className="bg-[var(--background)] text-[var(--foreground)] antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
