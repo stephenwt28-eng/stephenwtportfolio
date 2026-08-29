@@ -1,7 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const CONTACT_EMAIL = 'stephenwt28@gmail.com';
 
 export async function POST(request) {
@@ -14,6 +13,12 @@ export async function POST(request) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Enter a valid email address.' }, { status: 400 });
     }
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set.');
+      return NextResponse.json({ error: 'Email service is not configured yet.' }, { status: 500 });
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
