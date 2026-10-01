@@ -39,7 +39,7 @@ export const projects = [
     fullDesc: 'A full-stack learning tracker built with Next.js and Supabase. Users register, log in, and manage their own learning entries — tracking topics, categories, status (Not Started/Learning/Practicing/Completed), confidence level (Low/Medium/High), notes, and study dates. Each user only sees their own data via Row Level Security. Click here if you want to stay on top of your game with a brand-new regimen to keep you grounded!',
     tech: ['Next.js', 'Supabase', 'Tailwind CSS'],
     status: 'complete',
-    thumbnail: '/images/learningtracker_thumbnail.png',
+    thumbnail: '/images/LearningTracker_pencil-removebg-preview.png',
     features: [
       'User registration and login with Supabase Auth',
       'Create learning entries with topic, category, status, confidence, notes, and study date',
