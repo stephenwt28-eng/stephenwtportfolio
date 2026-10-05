@@ -12,7 +12,6 @@ export default function ContactPage() {
       <p className="text-base md:text-lg text-[var(--muted)] leading-relaxed mb-10">
         Whether you're hiring for a full-time role or have a freelance project you'd like to scope out, I'd love to hear from you. Send a message below and I'll get back to you quickly.
       </p>
-npm
       <ContactForm />
 
       <div className="mt-20 pt-10 border-t border-[var(--border)]">
