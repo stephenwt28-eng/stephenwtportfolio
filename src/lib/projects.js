@@ -49,6 +49,6 @@ export const projects = [
       'Row Level Security — each user only sees their own data',
       'Protected dashboard with session management'
     ],
-    liveUrl: 'https://YOUR-LEARNING-TRACKER-URL.vercel.app/',
+    liveUrl: 'https://learning-tracker-ten-nu.vercel.app/',
   }
 ];
