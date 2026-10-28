@@ -50,5 +50,17 @@ export const projects = [
       'Protected dashboard with session management'
     ],
     liveUrl: 'https://learning-tracker-ten-nu.vercel.app/',
+  },
+  {
+    id: 'salazars-pro-finishes',
+    title: "Salazar's Pro Finishes",
+    shortDesc: 'Coming soon.',
+    fullDesc: "Coming soon.",
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    status: 'coming-soon',
+    thumbnail: '/images/salazarsprofinishes_thumbnail.png',
+    features: [
+      'Coming soon.'
+    ]
   }
 ];
